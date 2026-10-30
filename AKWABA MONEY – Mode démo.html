@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><title>AKWABA MONEY – Démo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4F6FA;--sf:#fff;--tx:#101B35;--mu:#5d6985;--ln:#e3e8f2;--c1:#13C5DC;--c2:#1769E8;--c3:#773DEB;--ok:#16A34A;--er:#DC2626;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1327;--sf:#101B35;--tx:#eef2fb;--mu:#9aa6c4;--ln:#1f2d52;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b1327;--sf:#101B35;--tx:#eef2fb;--mu:#9aa6c4;--ln:#1f2d52;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--tx);font:400 15px/1.45 "Plus Jakarta Sans",system-ui,sans-serif}
+#app{max-width:440px;margin:auto;min-height:100vh;padding:0 16px 96px}
+h1,h2,h3{margin:0;font-weight:800}h2{font-size:20px;margin:18px 0 10px}h3{font-size:15px}
+.demo{background:var(--c3);color:#fff;font-weight:800;font-size:12px;text-align:center;padding:6px;margin:0 -16px}
+.mu{color:var(--mu);font-size:13px}.row{display:flex;align-items:center;gap:12px}.sp{justify-content:space-between}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:16px;padding:14px}
+.hero{background:linear-gradient(135deg,var(--c2),var(--c3));color:#fff;border-radius:22px;padding:20px;margin-top:14px;box-shadow:0 14px 30px -14px var(--c3)}
+.bal{font-size:32px;font-weight:800;letter-spacing:-.5px;margin:4px 0 14px}
+.eye{background:rgba(255,255,255,.2);border:0;color:#fff;border-radius:10px;padding:6px 10px;font:inherit;font-size:13px}
+.acts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.act{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:12px 4px;text-align:center;font:600 12px inherit;color:var(--tx);cursor:pointer}
+.act b{display:block;font-size:22px;color:var(--c2)}
+.btn{background:linear-gradient(90deg,var(--c1),var(--c2));color:#fff;border:0;border-radius:12px;padding:13px 16px;font:800 15px inherit;width:100%;cursor:pointer}
+.btn.alt{background:var(--sf);color:var(--tx);border:1px solid var(--ln)}.btn:disabled{opacity:.5}
+.btn.sm{width:auto;padding:8px 12px;font-size:13px}
+input,select{width:100%;padding:12px;border:1px solid var(--ln);border-radius:12px;background:var(--bg);color:var(--tx);font:inherit;margin:4px 0 10px}
+label{font-weight:600;font-size:13px}
+.tx{padding:11px 0;border-bottom:1px solid var(--ln);cursor:pointer}
+.ico{width:38px;height:38px;border-radius:12px;background:var(--bg);display:grid;place-items:center;font-size:18px}
+.pos{color:var(--ok);font-weight:800}.neg{color:var(--tx);font-weight:800}
+.tag{font-size:11px;font-weight:800;border-radius:8px;padding:2px 7px;background:var(--bg);color:var(--mu)}
+.tag.Réussi{background:#16A34A22;color:var(--ok)}.tag.Échoué{background:#DC262622;color:var(--er)}.tag.En-traitement,.tag.En-attente{background:#1769E822;color:var(--c2)}
+.chips{display:flex;gap:6px;overflow-x:auto;margin:8px 0}.chip{border:1px solid var(--ln);background:var(--sf);color:var(--tx);border-radius:20px;padding:6px 12px;font:600 13px inherit;white-space:nowrap}
+.chip.on{background:var(--c2);color:#fff;border-color:var(--c2)}
+nav{position:fixed;left:0;right:0;bottom:0;background:var(--sf);border-top:1px solid var(--ln);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom,0px)}
+nav div{display:flex;width:100%;max-width:440px}nav button{flex:1;border:0;background:none;color:var(--mu);padding:10px 0;font:600 11px inherit}nav button.on{color:var(--c2)}nav b{display:block;font-size:20px}
+.shade{position:fixed;inset:0;background:#0008;display:flex;align-items:flex-end;justify-content:center;z-index:9}
+.sheet{background:var(--sf);width:100%;max-width:440px;border-radius:22px 22px 0 0;padding:20px 16px calc(20px + env(safe-area-inset-bottom,0px));max-height:90vh;overflow:auto;animation:up .25s ease}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+.err{color:var(--er);font-weight:600;min-height:20px;font-size:13px}
+.vc{border-radius:20px;padding:18px;color:#fff;background:linear-gradient(135deg,var(--c1),var(--c2) 55%,var(--c3));min-height:150px;margin:10px 0;display:flex;flex-direction:column;justify-content:space-between}
+.vc.blk{filter:grayscale(1);opacity:.7}
+.bars{display:flex;align-items:flex-end;gap:8px;height:110px}.bars i{flex:1;border-radius:6px 6px 0 0;background:linear-gradient(var(--c1),var(--c2))}.bars i.o{background:var(--c3)}
+.pb{height:8px;border-radius:6px;background:var(--bg);margin:4px 0 10px}.pb i{display:block;height:100%;border-radius:6px;background:var(--c2)}
+.toast{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:10px 16px;border-radius:12px;z-index:20;font-weight:600}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style></head><body><div id="app"></div>
+<script>
+const F=n=>Math.abs(n).toLocaleString("fr-FR")+" FCFA";
+const RATE={Dépôt:.015,Retrait:.01,Transfert:.005};
+const ICO={Dépôt:"⬇️",Retrait:"⬆️",Transfert:"↗️",Paiement:"🧾",Rechargement:"💳"};
+let S={v:"welcome",bal:125000,hide:false,f:"Tous",q:"",sheet:null,busy:false,phys:false,
+cards:[{n:"4821",blk:false,b:0}],
+tx:[
+{r:"AKM-100006",t:"Paiement",l:"Facture électricité CEET",a:-8500,s:"Réussi",d:"2026-10-27T18:40",c:"Factures"},
+{r:"AKM-100005",t:"Retrait",l:"Retrait Moov Money",a:-20000,s:"Réussi",d:"2026-10-25T11:05",c:"Retraits"},
+{r:"AKM-100004",t:"Transfert",l:"Transfert à Ama K.",a:-15000,s:"Réussi",d:"2026-10-22T16:20",c:"Transferts"},
+{r:"AKM-100003",t:"Paiement",l:"Abonnement Canal+",a:-10000,s:"Réussi",d:"2026-10-18T08:00",c:"Abonnements"},
+{r:"AKM-100002",t:"Dépôt",l:"Dépôt Flooz",a:50000,s:"Réussi",d:"2026-10-12T10:30",c:"Dépôt"},
+{r:"AKM-100001",t:"Dépôt",l:"Dépôt Mixx by Yas",a:75000,s:"Réussi",d:"2026-10-03T09:12",c:"Dépôt"}]};
+const dt=d=>new Date(d).toLocaleString("fr-FR",{day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit"});
+const go=v=>{S.v=v;S.sheet=null;R();scrollTo(0,0)};
+function toast(m){const e=document.createElement("div");e.className="toast";e.textContent=m;document.body.append(e);setTimeout(()=>e.remove(),2200)}
+const inc=()=>S.tx.filter(x=>x.a>0&&x.s=="Réussi").reduce((s,x)=>s+x.a,0);
+const out=()=>-S.tx.filter(x=>x.a<0&&x.s!="Échoué").reduce((s,x)=>s+x.a,0);
+const row=x=>`<div class="tx row sp" onclick="rc('${x.r}')"><div class="row"><div class="ico">${ICO[x.t]||"•"}</div><div><b>${x.l}</b><div class="mu">${dt(x.d)} · <span class="tag ${x.s.replace(" ","-")}">${x.s}</span></div></div></div><span class="${x.a>0?"pos":"neg"}">${x.a>0?"+":"−"}${F(x.a)}</span></div>`;
+function R(){const a=$app=document.getElementById("app");let h="";
+if(S.v=="welcome")h=`<div style="padding-top:12vh;text-align:center"><svg width="84" height="84" viewBox="0 0 84 84"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#13C5DC"/><stop offset=".6" stop-color="#1769E8"/><stop offset="1" stop-color="#773DEB"/></linearGradient></defs><rect width="84" height="84" rx="26" fill="url(#g)"/><path d="M24 60 42 22 60 60M32 48h20" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><h1 style="font-size:34px;margin-top:18px">AKWABA MONEY</h1><p class="mu" style="font-size:17px">Votre argent, votre liberté.</p><div class="card" style="text-align:left;margin:28px 0"><b>Mode démonstration</b><p class="mu" style="margin:6px 0 0">Testez dépôts, retraits, transferts et cartes avec un solde fictif de 125 000 FCFA. Aucun vrai fonds n’est utilisé.</p></div><button class="btn" onclick="go('otp')">Entrer en mode démo</button></div>`;
+else if(S.v=="otp")h=`<div style="padding-top:14vh"><h1>Vérifiez votre numéro</h1><p class="mu">Entrez le code à 6 chiffres envoyé au +228 90 00 00 00. Code démo : 123456</p><input id="otp" inputmode="numeric" maxlength="6" placeholder="••••••" style="font-size:24px;letter-spacing:8px;text-align:center"><div class="err" id="e"></div><button class="btn" onclick="chk()">Confirmer</button><button class="btn alt" style="margin-top:8px" onclick="go('welcome')">Retour</button></div>`;
+else{h=`<div class="demo">MODE DÉMONSTRATION · opérations fictives</div>`+V[S.v]()+`<nav><div>${[["home","🏠","Accueil"],["hist","🧾","Historique"],["cards","💳","Cartes"],["stats","📊","Stats"],["prof","👤","Profil"]].map(x=>`<button class="${S.v==x[0]?"on":""}" onclick="go('${x[0]}')"><b>${x[1]}</b>${x[2]}</button>`).join("")}</div></nav>`}
+if(S.sheet)h+=sheetH();a.innerHTML=h}
+const V={
+home:()=>`<div class="row sp" style="margin-top:12px"><div><span class="mu">Bonjour</span><h2 style="margin:0">Kofi Mensah</h2></div><button class="chip" onclick="toast('Aucune nouvelle notification')">🔔</button></div>
+<div class="hero"><div class="row sp"><span style="opacity:.85">Solde disponible</span><button class="eye" onclick="S.hide=!S.hide;R()">${S.hide?"Afficher":"Masquer"}</button></div><div class="bal">${S.hide?"••••••• FCFA":F(S.bal)}</div><div class="row sp"><div><span style="opacity:.8;font-size:12px">Revenus</span><br><b>${S.hide?"•••":F(inc())}</b></div><div style="text-align:right"><span style="opacity:.8;font-size:12px">Dépenses</span><br><b>${S.hide?"•••":F(out())}</b></div></div></div>
+<div class="acts"><button class="act" onclick="op('Dépôt')"><b>⬇️</b>Dépôt</button><button class="act" onclick="op('Retrait')"><b>⬆️</b>Retrait</button><button class="act" onclick="op('Transfert')"><b>↗️</b>Transfert</button><button class="act" onclick="go('cards')"><b>💳</b>Cartes</button></div>
+<h2>Dernières transactions</h2><div class="card" style="padding:4px 14px">${S.tx.slice(0,4).map(row).join("")}</div>`,
+hist:()=>`<h2>Historique</h2><input placeholder="Rechercher (libellé, référence)" value="${S.q}" oninput="S.q=this.value;L()"><div class="chips">${["Tous","Dépôt","Retrait","Transfert","Paiement","Rechargement"].map(x=>`<button class="chip ${S.f==x?"on":""}" onclick="S.f='${x}';R()">${x}</button>`).join("")}</div><div class="card" style="padding:4px 14px" id="list">${list()}</div><p class="mu">Touchez une opération pour voir le reçu.</p>`,
+cards:()=>`<h2>Mes cartes</h2>${S.cards.map((c,i)=>`<div class="vc ${c.blk?"blk":""}"><div class="row sp"><b>AKWABA MONEY</b><span>${c.blk?"Bloquée":"Virtuelle · démo"}</span></div><div style="font-size:20px;letter-spacing:3px">•••• •••• •••• ${c.n}</div><div class="row sp"><span>KOFI MENSAH</span><b>${F(c.b)}</b></div></div><div class="row" style="margin-bottom:8px"><button class="btn alt sm" onclick="blk(${i})">${c.blk?"Débloquer":"Bloquer"}</button><button class="btn alt sm" onclick="op('Rechargement',${i})">Recharger</button></div>`).join("")}<button class="btn" onclick="newc()">Créer une carte virtuelle</button><button class="btn alt" style="margin-top:8px" ${S.phys?"disabled":""} onclick="S.phys=true;toast('Demande envoyée (fictive)');R()">${S.phys?"Carte physique : en attente":"Demander une carte physique"}</button><p class="mu">Numéros fictifs. En production, les cartes viennent d’un émetteur agréé ; les CVV ne sont jamais stockés.</p>`,
+stats:()=>{const m=[["Mai",60,45],["Juin",80,50],["Juil.",55,62],["Août",90,48],["Sept.",70,40],["Oct.",inc()/1500,out()/1500]];const cats={};S.tx.filter(x=>x.a<0&&x.s!="Échoué").forEach(x=>cats[x.c]=(cats[x.c]||0)-x.a);const tot=out()||1;
+return `<h2>Statistiques</h2><div class="card"><div class="row sp"><div><span class="mu">Revenus</span><br><b class="pos">${F(inc())}</b></div><div style="text-align:right"><span class="mu">Dépenses</span><br><b>${F(out())}</b></div></div></div><h2>Revenus et dépenses par mois</h2><div class="card"><div class="bars">${m.map(x=>`<i style="height:${Math.min(100,x[1])}%"></i><i class="o" style="height:${Math.min(100,x[2])}%"></i>`).join("")}</div><div class="row sp mu" style="margin-top:6px">${m.map(x=>`<span>${x[0]}</span>`).join("")}</div><p class="mu" style="margin:8px 0 0">Bleu : revenus · Violet : dépenses</p></div><h2>Catégories de dépenses</h2><div class="card">${Object.entries(cats).map(([k,v])=>`<div class="row sp"><span>${k}</span><b>${F(v)}</b></div><div class="pb"><i style="width:${v/tot*100}%"></i></div>`).join("")}</div>`},
+prof:()=>`<h2>Profil</h2><div class="card"><b>Kofi Mensah</b><div class="mu">kofi@exemple.tg · +228 90 00 00 00 · Togo</div><p style="margin:10px 0 0"><span class="tag Réussi">KYC vérifié (démo)</span></p></div><h2>Sécurité</h2><div class="card"><div class="row sp"><span>PIN de démonstration</span><b>1234</b></div><p class="mu" style="margin:6px 0 0">Appareil connecté : ce téléphone. Notifications activées.</p></div><div style="margin-top:14px"><button class="btn alt" onclick="toast('Assistance : support@akwaba.money (fictif)')">Assistance</button><button class="btn alt" style="margin-top:8px" onclick="if(confirm('Réinitialiser la démo ?'))location.reload()">Réinitialiser la démo</button><button class="btn" style="margin-top:8px" onclick="go('welcome')">Se déconnecter</button></div>`};
+function list(){const q=S.q.toLowerCase();const r=S.tx.filter(x=>(S.f=="Tous"||x.t==S.f)&&(x.l+x.r).toLowerCase().includes(q));return r.length?r.map(row).join(""):`<p class="mu">Aucune opération ne correspond. Changez le filtre ou la recherche.</p>`}
+function L(){document.getElementById("list").innerHTML=list()}
+function chk(){const v=document.getElementById("otp").value;if(v=="123456")go("home");else document.getElementById("e").textContent="Code incorrect. Utilisez 123456 en mode démo."}
+function blk(i){S.cards[i].blk=!S.cards[i].blk;toast(S.cards[i].blk?"Carte bloquée":"Carte débloquée");R()}
+function newc(){S.cards.push({n:String(1000+Math.floor(Math.random()*9000)),blk:false,b:0});toast("Carte virtuelle créée");R()}
+function op(t,ci){S.sheet={t,ci};R()}
+function rc(r){S.sheet={rc:S.tx.find(x=>x.r==r)};R()}
+function sheetH(){const s=S.sheet;if(s.rc){const x=s.rc;return `<div class="shade" onclick="S.sheet=null;R()"><div class="sheet" onclick="event.stopPropagation()"><h2 style="margin-top:0">Reçu</h2><div class="card">${[["Référence",x.r],["Type",x.t],["Libellé",x.l],["Montant",(x.a>0?"+":"−")+F(x.a)],["Frais",F(x.fee||0)],["Date",dt(x.d)],["Statut",x.s]].map(k=>`<div class="row sp" style="padding:4px 0"><span class="mu">${k[0]}</span><b>${k[1]}</b></div>`).join("")}</div><p class="mu">Reçu fictif, sans valeur.</p><button class="btn" onclick="S.sheet=null;R()">Fermer</button></div></div>`}
+const t=s.t;const prov=t=="Dépôt"?["Mixx by Yas","Flooz","Moov Money","Coris Money","Visa","Mastercard"]:t=="Retrait"?["Mobile Money","Compte bancaire"]:[];
+return `<div class="shade" onclick="S.sheet=null;R()"><div class="sheet" onclick="event.stopPropagation()"><h2 style="margin-top:0">${t}</h2>${prov.length?`<label>${t=="Dépôt"?"Moyen de paiement":"Destination"}</label><select id="p">${prov.map(p=>`<option>${p}</option>`).join("")}</select>`:""}${t=="Retrait"||t=="Transfert"?`<label>${t=="Transfert"?"Numéro ou identifiant du destinataire":"Numéro ou IBAN du destinataire"}</label><input id="d" placeholder="${t=="Transfert"?"+228 90 00 00 00 ou @identifiant":"+228 …"}">`:""}<label>Montant (FCFA)</label><input id="a" inputmode="numeric" placeholder="Ex. 10000" oninput="fee()">${t=="Transfert"?`<label>Message (facultatif)</label><input id="m" maxlength="60">`:""}<div class="card" id="fe" style="margin-bottom:10px">Entrez un montant pour voir les frais.</div><label>PIN (démo : 1234)</label><input id="pin" type="password" inputmode="numeric" maxlength="4"><div class="err" id="e"></div><button class="btn" id="ok" onclick="sub()">Confirmer</button></div></div>`}
+function fee(){const t=S.sheet.t,a=+document.getElementById("a").value;if(!(a>0)){fe.textContent="Entrez un montant pour voir les frais.";return}const f=t=="Rechargement"?0:Math.ceil(a*RATE[t]);fe.innerHTML=`Frais : <b>${F(f)}</b><br>${t=="Dépôt"?"Crédité":"Total débité"} : <b>${F(t=="Dépôt"?a-f:a+f)}</b>`}
+function sub(){if(S.busy)return;const t=S.sheet.t,a=+document.getElementById("a").value,pin=document.getElementById("pin").value,E=m=>document.getElementById("e").textContent=m;
+const p=document.getElementById("p"),d=document.getElementById("d"),f=t=="Rechargement"?0:Math.ceil(a*RATE[t]);
+if(!(a>0)||!Number.isInteger(a))return E("Entrez un montant entier supérieur à 0.");
+if(a<500)return E("Le montant minimum est de 500 FCFA.");
+if(a>1000000)return E("Limite démo : 1 000 000 FCFA par opération.");
+if(d&&d.value.trim().length<4)return E("Indiquez un destinataire valide.");
+if(t!="Dépôt"&&a+f>S.bal)return E("Solde insuffisant : il vous faut "+F(a+f)+".");
+if(pin!="1234")return E("PIN incorrect. Utilisez 1234 en mode démo.");
+S.busy=true;document.getElementById("ok").disabled=true;
+const r="AKM-"+(100001+S.tx.length),lab=t=="Dépôt"?"Dépôt "+p.value:t=="Retrait"?"Retrait "+p.value:t=="Transfert"?"Transfert à "+d.value.trim():"Rechargement carte •••• "+S.cards[S.sheet.ci].n;
+const x={r,t,l:lab,a:t=="Dépôt"?a-f:-(a+f),fee:f,s:t=="Transfert"||t=="Rechargement"?"Réussi":t=="Dépôt"?"En attente":"En traitement",d:new Date().toISOString(),c:t};
+S.tx.unshift(x);
+if(t=="Retrait")S.bal-=a+f;
+if(t=="Transfert")S.bal-=a+f;
+if(t=="Rechargement"){S.bal-=a;S.cards[S.sheet.ci].b+=a}
+S.busy=false;S.sheet={rc:x};R();toast(t=="Dépôt"||t=="Retrait"?"Opération enregistrée : statut "+x.s.toLowerCase():"Opération réussie");
+if(t=="Dépôt")setTimeout(()=>{x.s="Réussi";S.bal+=x.a;R();toast("Paiement confirmé : solde mis à jour")},1800);
+if(t=="Retrait")setTimeout(()=>{x.s="Réussi";R();toast("Retrait réussi")},2500)}
+R();
+</script></body></html>
